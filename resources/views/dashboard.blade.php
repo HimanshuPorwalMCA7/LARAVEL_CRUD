@@ -8,7 +8,7 @@
   </head>
   <body>
   <div class="container">
-        <h1>Welcome To Dashboard {{ session('user')['name'] }}</h1>
+        <h1>Welcome To Dashboard</h1>
         <form action="{{url('/')}}/logout" method="post">
             @csrf
             <button type="submit" class="btn btn-danger">Logout</button>
@@ -16,7 +16,7 @@
         <br>
         <button class="btn btn-primary"><a href="add_post" style="color: white; text-decoration: none;">Add Post</a></button>
         <button class="btn btn-primary"><a href="show_post" style="color: white; text-decoration: none;">Show Post</a></button>
+        <button class="btn btn-primary"><a href="user_status" style="color: white; text-decoration: none;">User Updation</a></button>
     </div>
-   
   </body>
 </html>

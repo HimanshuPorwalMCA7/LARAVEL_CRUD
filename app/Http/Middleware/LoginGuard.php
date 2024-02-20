@@ -15,10 +15,99 @@ class LoginGuard
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if(!session()->has('user'))
-        return $next($request);
-        else{
+       
+        if (!auth()->check()) {
+            return $next($request);
+        } else {
             return back();
         }
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ // if(!session()->has('user'))
+        // return $next($request);
+        // else{
+        //     return back();
+        // }

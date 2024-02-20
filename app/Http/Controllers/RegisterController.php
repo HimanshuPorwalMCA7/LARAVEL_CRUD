@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\users;
-
+use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 class RegisterController extends Controller
 {
     public function form()
@@ -24,17 +24,22 @@ class RegisterController extends Controller
             ]
             );
         
-        $data=new users();
+    $existingUser = User::where('email', $request->email)->first();
+    if ($existingUser) {
+    return redirect('/register')->with('error', 'Email is already registered.');
+    }
+        
+        $data=new User();
         $name = explode(' ', $request->input('name'));
         $firstName = $name[0] ?? '';
         $lastName = $name[1] ?? '';
         $data->first_name= $firstName;        
         $data->last_name= $lastName;        
         $data->email= $request->email;
-        $data->password= $request->password;
+        $data->password = Hash::make($request->password);
         $data->role_code=$request->role_code;
         $data->save();
-        return redirect('/login');
+        return redirect('/login')->with('success', 'Registration successful. You can now login.');
        
     }
 

@@ -6,7 +6,7 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\dashboardController;
 use App\Http\Controllers\PostController;
-
+use Illuminate\Support\Facades\App;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -23,6 +23,17 @@ Route::get('/', function () {
 });
 
 
+Route::get('/en', function () {
+    App::setLocale('en');
+    return view('welcome');
+});
+
+Route::get('/hi', function () {
+    App::setLocale('hi');
+    return view('welcome');
+});
+
+
 Route::get('/register', [RegisterController::class, 'form'])->middleware('logingaurd');
 Route::post('/registered',[RegisterController::class,'registered']);
 Route::get('/login', [LoginController::class, 'login'])->middleware('logingaurd');
@@ -35,3 +46,6 @@ Route::get('/show_post',[PostController::class,'showpost'])->middleware('gaurd')
 Route::delete('/delete_post/{id}',[PostController::class,'deletepost'])->middleware('gaurd');
 Route::get('/edit_post/{id}',[PostController::class,'editpost'])->middleware('gaurd');
 Route::post('/edit_post/{id}',[PostController::class,'edit']);
+Route::post('/update_status/{id}',[PostController::class,'updatestatus']);
+Route::get('/user_status',[dashboardController::class,'updatestatus'])->middleware('gaurd');
+Route::post('/update/{id}',[dashboardController::class,'update']);

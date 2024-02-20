@@ -9,6 +9,11 @@
   <body>
   <div class="container">
         <h1>Login Form</h1>
+        @if(session('success'))
+        <div class="alert alert-success" role="alert">
+            {{ session('success') }}
+        </div>
+        @endif
         <form method="POST" action="{{ url('/') }}/logined">
             @csrf
             <div class="form-group">
@@ -32,6 +37,8 @@
         </form>
         <br>
         <button class="btn btn-link"><a href="register">Register Now</a></button>
+        <button class="btn btn-link"><a href="/">Home</a></button>
+
     </div>
   </body>
 </html>

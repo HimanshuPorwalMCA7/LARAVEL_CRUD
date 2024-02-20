@@ -10,9 +10,40 @@
       
   <div class="container">
         <h1>Registration Form</h1>
+
+        @if(session('error'))
+        <div class="alert alert-danger" role="alert">
+            {{ session('error') }}
+        </div>
+        @endif
         <form method="POST" action="{{url('/')}}/registered">
             @csrf
-            <div class="form-group">
+            <x-input type="text" name="name" label="Enter Your Name"/>
+            <x-input type="email" name="email" label="Enter Your Email"/>
+            <x-input type="password" name="password" label="Enter Your Password"/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            
+             <!-- <div class="form-group">
                 <label for="name">Name</label>
                 <input id="name" type="text" name="name" class="form-control">
                 <span class="text-danger">
@@ -22,7 +53,7 @@
                 </span>
             </div>
             
-            <div class="form-group">
+           <div class="form-group">
                 <label for="email">Email</label>
                 <input id="email" type="email" name="email" class="form-control">
                 <span class="text-danger">
@@ -40,7 +71,7 @@
                         {{$message}}
                     @enderror
                 </span>
-            </div>
+            </div> -->
 
             <div class="form-group">
                 <label for="role">Role</label>
